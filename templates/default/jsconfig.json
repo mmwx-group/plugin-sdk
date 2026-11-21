@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "checkJs": false,
+    "types": ["@mmwx/plugin-sdk/server"]
+  },
+  "include": ["src", "server.js"]
+}

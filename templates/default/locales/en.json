@@ -1,0 +1,1 @@
+{ "intro": "This is the {{name}} page. Edit the code in src/ and the browser hot-reloads.", "say": "Say hello", "hits": "#{{n}}", "card": "{{name}}" }

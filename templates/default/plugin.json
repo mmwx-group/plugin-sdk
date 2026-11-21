@@ -1,0 +1,24 @@
+{
+  "manifest": 1,
+  "id": "{{id}}",
+  "name": "{{name}}",
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "sdk": "^1.0.0",
+  "frontend": {
+    "entry": "dist/index.js",
+    "style": "dist/index.css",
+    "locales": { "zh-CN": "locales/zh-CN.json", "en": "locales/en.json" },
+    "pages": [{ "id": "home", "title": "{{name}}", "role": "admin", "icon": "puzzle" }],
+    "slots": ["dashboard.card"]
+  },
+  "backend": { "runtime": "script", "entry": "server.js" },
+  "permissions": ["routes:admin"],
+  "settings": {
+    "type": "object",
+    "properties": {
+      "greeting": { "type": "string", "title": "问候语", "default": "你好" }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@mmwx/plugin-sdk",
+  "version": "1.0.0",
+  "description": "妙妙屋X 插件开发工具:类型定义 + mmwx-plugin 命令行(新建、打包、签名、推送、本地开发反代、实时日志、后端本机运行与断点调试)",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmwx-group/plugin-sdk.git"
+  },
+  "homepage": "https://github.com/mmwx-group/plugin-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/mmwx-group/plugin-sdk/issues"
+  },
+  "bin": {
+    "mmwx-plugin": "bin/mmwx-plugin.mjs"
+  },
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./runtime/sdk.js"
+    },
+    "./server": {
+      "types": "./types/server.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "runtime",
+    "types",
+    "templates",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.12"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.10"
+  },
+  "peerDependencies": {
+    "@types/react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,36 @@
+name: Publish to npm
+
+# 推送 v<版本> tag(须与 package.json 的 version 一致)即发布到 npm。
+# 需要仓库 secret NPM_TOKEN:npm 上 @mmwx 组织下的 automation / granular token(对 @mmwx/plugin-sdk 有发布权限)。
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write # npm provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Tag 与 package.json 版本一致
+        run: |
+          v=$(node -p "require('./package.json').version")
+          if [ "v$v" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::tag $GITHUB_REF_NAME 与 package.json 版本 $v 不一致"; exit 1
+          fi
+      - name: Smoke test
+        run: |
+          npm install --no-audit --no-fund
+          node bin/mmwx-plugin.mjs --help >/dev/null
+          npm pack --dry-run
+      - name: Publish
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

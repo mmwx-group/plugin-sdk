@@ -1,0 +1,15 @@
+{
+  "name": "mmwx-plugin-{{id}}",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "mmwx-plugin dev",
+    "dev:local": "mmwx-plugin dev --inspect",
+    "build": "mmwx-plugin build",
+    "pack": "mmwx-plugin pack",
+    "deploy": "mmwx-plugin deploy"
+  },
+  "devDependencies": {
+    "@mmwx/plugin-sdk": "^{{sdkVersion}}"
+  }
+}
